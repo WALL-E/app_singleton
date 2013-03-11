@@ -8,7 +8,7 @@ import time
 
 def main():
 	try:
-		app_singleton.app_singleton("/tmp/zz_2013_03_11_16_06.pid")
+		app_singleton.app_singleton("/tmp/zz.pid")
 		time.sleep(100)
 	except Exception,msg:
 		print msg

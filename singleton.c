@@ -12,12 +12,14 @@
 #include <fcntl.h>
 #include <errno.h>
  
+#define BUFFER_SIZE 64
+
 int app_singleton(char *pid_file)
 {
     int fd = -1;
     int m = 0;
     int n = 0;
-    char pid[64] = {0};
+    char buf[BUFFER_SIZE] = {0};
     struct flock lock;
  
     /* open file */
@@ -37,8 +39,8 @@ int app_singleton(char *pid_file)
     }
  
     /* write PID */
-    m = sprintf(pid, "%u", (unsigned int)getpid());
-    n = write(fd, pid, m);
+    m = snprintf(buf, BUFFER_SIZE, "%u", (unsigned int)getpid());
+    n = write(fd, buf, m);
     if(n != m){
         //perror("app_singleton:write");
         return -1;
