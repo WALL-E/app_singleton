@@ -14,7 +14,7 @@ def app_singleton(pid_file):
 		raise OSError,"Failed to create singleton"
 def main():
 	import time
-	app_singleton("/tmp/zz_2013_03_11_16_06.pid")
+	app_singleton("/tmp/zz.pid")
 	time.sleep(100)
 
 if __name__ == "__main__":
